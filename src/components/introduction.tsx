@@ -9,11 +9,17 @@ export default function Introduction() {
 
   return (
     <div>
-      <h1>Welcome to My Website!</h1>
+      <h1 className="px-4 py-2 mb-4 font-bold text-green-700">
+        Welcome to My Website!
+      </h1>
 
       {!isEditing && (
         <div>
-          <button type="submit" onClick={() => setIsEditing(true)}>
+          <button
+            className="py-2.5 px-4 my-2 block bg-indigo-600 text-white text-xs font-medium text-center md:mb-0 md:ml-8 rounded-md"
+            type="submit"
+            onClick={() => setIsEditing(true)}
+          >
             Edit
           </button>
           <IntroContents img={image} desc={description} />

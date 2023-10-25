@@ -1,25 +1,23 @@
 import { useState } from 'react';
 
 type PostProps = {
-  id: number;
-  titleInput: string;
-  img: string;
-  desc: string;
-  onSave: (id: number, title: string, img: string, desc: string) => void;
+  titleProp: string;
+  imgProp: string;
+  descProp: string;
+  onSave: (title: string, img: string, desc: string) => void;
   onCancel: () => void;
 };
 
 export default function PostForm({
-  id,
-  titleInput,
-  img,
-  desc,
+  titleProp,
+  imgProp,
+  descProp,
   onSave,
   onCancel,
 }: PostProps) {
-  const [title, setTitle] = useState(titleInput);
-  const [image, setImg] = useState(img);
-  const [description, setDescription] = useState(desc);
+  const [title, setTitle] = useState(titleProp);
+  const [image, setImage] = useState(imgProp);
+  const [description, setDescription] = useState(descProp);
 
   return (
     <>
@@ -38,7 +36,7 @@ export default function PostForm({
         <input
           className="form-control"
           placeholder="Enter image url"
-          onChange={(evt) => setImg(evt.target.value)}
+          onChange={(evt) => setImage(evt.target.value)}
           value={image}
         />
       </div>
@@ -57,7 +55,7 @@ export default function PostForm({
       <button
         className="btn btn-success"
         type="button"
-        onClick={() => onSave(id, title, image, description)}
+        onClick={() => onSave(title, image, description)}
       >
         Save
       </button>

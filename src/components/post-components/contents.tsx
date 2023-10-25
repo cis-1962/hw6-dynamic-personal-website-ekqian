@@ -39,14 +39,11 @@ export default function PostContents({ id, title, img, desc }: PostProps) {
         <div>
           <div>
             <PostForm
-              id={id}
-              titleInput={title}
-              img={img}
-              desc={desc}
-              onSave={(idInput, titleInput, imgInput, descInput) => {
-                dispatch(
-                  modifyPost({ idInput, titleInput, imgInput, descInput }),
-                );
+              titleProp={title}
+              imgProp={img}
+              descProp={desc}
+              onSave={(titleInput, imgInput, descInput) => {
+                dispatch(modifyPost({ id, titleInput, imgInput, descInput }));
                 setIsEditing(false);
               }}
               onCancel={() => setIsEditing(false)}

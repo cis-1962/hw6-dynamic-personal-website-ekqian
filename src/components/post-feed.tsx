@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import PostContents from './post-components/contents';
 import PostForm from './post-components/form';
-import { addPost, selectId, selectPosts } from '../features/post-slice';
+import { addPost, selectPosts } from '../features/post-slice';
 
 // type Post = {
 //   id: number;
@@ -14,7 +14,7 @@ import { addPost, selectId, selectPosts } from '../features/post-slice';
 export default function Posts() {
   const [isEditing, setIsEditing] = useState(false);
   const posts = useSelector(selectPosts);
-  const id = useSelector(selectId);
+  const [id, setId] = useState(1);
   const dispatch = useDispatch();
 
   return (
@@ -32,13 +32,13 @@ export default function Posts() {
 
       {isEditing && (
         <PostForm
-          id={id}
-          titleInput=""
-          img=""
-          desc=""
-          onSave={(idInput, title, img, desc) => {
-            dispatch(addPost({ idInput, title, img, desc }));
+          titleProp=""
+          imgProp=""
+          descProp=""
+          onSave={(title, img, desc) => {
+            dispatch(addPost({ id, title, img, desc }));
             setIsEditing(false);
+            setId(id + 1);
           }}
           onCancel={() => setIsEditing(false)}
         />
