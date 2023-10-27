@@ -8,7 +8,7 @@ export default function Introduction() {
   const [isEditing, setIsEditing] = useState(false);
 
   return (
-    <div>
+    <div className="flex-auto">
       <h1 className="px-4 py-2 mb-4 font-bold text-green-700">
         Welcome to My Website!
       </h1>

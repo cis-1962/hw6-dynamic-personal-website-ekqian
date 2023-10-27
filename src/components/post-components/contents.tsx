@@ -18,18 +18,14 @@ export default function PostContents({ id, title, img, desc }: PostProps) {
   return (
     <div>
       {!isEditing && (
-        <div>
-          <h1>
+        <div className="px-4 py-4 m-4 border-2 border-gray-800">
+          <h3>
             Post {id} {title}
-          </h1>
-          <h1>{img}</h1>
-          <h1>{desc}</h1>
+          </h3>
+          {img && <img className="img-fluid" src={img} alt="intro" />}
+          <h3>{desc}</h3>
 
-          <button
-            className="btn btn-success"
-            type="button"
-            onClick={() => setIsEditing(true)}
-          >
+          <button type="button" onClick={() => setIsEditing(true)}>
             Edit
           </button>
         </div>
@@ -42,15 +38,22 @@ export default function PostContents({ id, title, img, desc }: PostProps) {
               titleProp={title}
               imgProp={img}
               descProp={desc}
-              onSave={(titleInput, imgInput, descInput) => {
-                dispatch(modifyPost({ id, titleInput, imgInput, descInput }));
+              onSave={(titleInput, image, description) => {
+                dispatch(
+                  modifyPost({
+                    id,
+                    title: titleInput,
+                    img: image,
+                    desc: description,
+                  }),
+                );
                 setIsEditing(false);
               }}
               onCancel={() => setIsEditing(false)}
             />
           </div>
           <button
-            className="btn btn-success"
+            className="py-2.5 px-4 my-2 block bg-red-600 text-white text-xs font-medium text-center md:mb-0 md:ml-8 rounded-md"
             type="button"
             onClick={() => dispatch(removePost(id))}
           >

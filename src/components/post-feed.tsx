@@ -19,16 +19,14 @@ export default function Posts() {
 
   return (
     <div>
-      <h1>
-        Blog Posts
-        <button
-          className="btn btn-primary float-right"
-          type="submit"
-          onClick={() => setIsEditing(true)}
-        >
-          Add
-        </button>
-      </h1>
+      <h1 className="px-4 py-2 mb-4 font-bold text-green-700">Blog Posts</h1>
+      <button
+        className="py-2.5 px-4 my-2 block bg-indigo-600 text-white text-xs font-medium text-center md:mb-0 md:ml-8 rounded-md"
+        type="submit"
+        onClick={() => setIsEditing(true)}
+      >
+        Add
+      </button>
 
       {isEditing && (
         <PostForm
@@ -44,7 +42,7 @@ export default function Posts() {
         />
       )}
 
-      <div className="row">
+      <div className="flex align-center">
         {posts.map((post) => (
           <PostContents key={post.id} {...post} />
         ))}

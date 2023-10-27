@@ -4,7 +4,7 @@ type PostProps = {
   titleProp: string;
   imgProp: string;
   descProp: string;
-  onSave: (title: string, img: string, desc: string) => void;
+  onSave: (title: string, image: string, description: string) => void;
   onCancel: () => void;
 };
 
@@ -20,29 +20,29 @@ export default function PostForm({
   const [description, setDescription] = useState(descProp);
 
   return (
-    <>
+    <div className="px-4 py-4 m-4 border-2 border-gray-800">
       <div className="form-group">
-        <h1>Title</h1>
+        <h3>Title</h3>
         <input
           className="form-control"
-          placeholder="Enter the title of the post"
+          placeholder="Enter Title"
           onChange={(evt) => setTitle(evt.target.value)}
           value={title}
         />
       </div>
 
       <div className="form-group">
-        <h1>Image</h1>
+        <h3>Image</h3>
         <input
           className="form-control"
-          placeholder="Enter image url"
+          placeholder="Enter Image URL"
           onChange={(evt) => setImage(evt.target.value)}
           value={image}
         />
       </div>
 
       <div className="form-group">
-        <h1>Description</h1>
+        <h3>Description</h3>
         <input
           className="form-control"
           id="exampleInputPassword1"
@@ -53,16 +53,16 @@ export default function PostForm({
       </div>
 
       <button
-        className="btn btn-success"
+        className="px-4"
         type="button"
         onClick={() => onSave(title, image, description)}
       >
         Save
       </button>
 
-      <button className="btn btn-info" type="button" onClick={() => onCancel()}>
+      <button className="px-4" type="button" onClick={() => onCancel()}>
         Cancel
       </button>
-    </>
+    </div>
   );
 }

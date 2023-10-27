@@ -12,7 +12,7 @@ export default function IntroForm({ img, desc, onSave, onCancel }: IntroProps) {
   const [description, setDescription] = useState(desc);
 
   return (
-    <div>
+    <div className="px-6 py-2 mb-4 font-light dark:font-extralight w-1/2 shadow-2xl">
       <input
         type="text"
         placeholder="Image"
@@ -26,11 +26,15 @@ export default function IntroForm({ img, desc, onSave, onCancel }: IntroProps) {
         onChange={(evt) => setDescription(evt.target.value)}
       />
 
-      <button type="submit" onClick={() => onSave(image, description)}>
+      <button
+        className="px-4"
+        type="submit"
+        onClick={() => onSave(image, description)}
+      >
         Save
       </button>
 
-      <button type="button" onClick={() => onCancel()}>
+      <button className="px-4" type="button" onClick={() => onCancel()}>
         Cancel
       </button>
     </div>
